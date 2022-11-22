@@ -7,15 +7,17 @@ const User = () => {
     const id = user.length;
     const userNumber = Math.floor(Math.random() * 10 + 1);
 
-    setUser({ id: id, userNumber: userNumber });
+    setUser([...user, { id: id, userNumber: userNumber }]);
+    console.log(user);
   };
 
   return (
     <div>
       <button onClick={addUserHandler}>Add user</button>
-      {user.map((singleUser) => (
-        <h2 key={singleUser.id}>{singleUser.userNumber}</h2>
-      ))}
+      {user.length >= 1 &&
+        user.map((singleUser) => (
+          <h2 key={singleUser.id}>{singleUser.userNumber}</h2>
+        ))}
     </div>
   );
 };
